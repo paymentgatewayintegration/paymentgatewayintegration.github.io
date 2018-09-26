@@ -1,31 +1,31 @@
 # Overview
 
-> This section will guide you in creating a framework for integrating Traknpay Payment Gateway with your android app. 
+> This section will guide you in creating a framework for integrating the Payment Gateway with your android app. 
 
-![Overview](https://traknpaypg.github.io/doc/images/overview.png?raw=true)
+![Overview](https://paymentgatewayintegration.github.io/doc/images/overview.png?raw=true)
 
 -------------
 
 # Sample App
-> To understand the Traknpay payment flow, you can download our sample app [here](https://github.com/traknpaypg/traknpaypg.github.io).
+> To understand the Payment Gateway payment flow, you can download our sample app [here](https://github.com/paymentgatewayintegration/paymentgatewayintegration.github.io).
 
 -------------
 
 # Prerequisites
 
-1. You should be a registered and approved merchant with Traknpay. If not registered, please [register here!](https://biz.traknpay.in/auth/register)
-2. You should have received the SALT and API key from Traknpay.
-3. You should have received the HOSTNAME for the Traknpay payment request URL.
+1. You should be a registered and approved merchant with Payment Gateway.
+2. You should have received the SALT and API key from Payment Gateway.
+3. You should have received the HOSTNAME for the Payment Gateway request URL.
 
 -------------
 
 # Server Side Setup
 
-> a. To prevent the data tampering(and ensure data integrity) between the your app and Traknpay, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Traknpay server.
+> a. To prevent the data tampering(and ensure data integrity) between the your app and Payment Gateway, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Payment Gateway server.
 
 ```markdown
-Traknpay uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the 
-hash, a secure private key known as **SALT key** will be provided by Traknpay that needs to be 
+Payment Gateway uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the 
+hash, a secure private key known as **SALT key** will be provided by Payment Gateway that needs to be 
 stored **very securely in your server**. Any compromise of the salt may lead to data tampering. 
 
 # The hash generation code has 3 components:
@@ -45,7 +45,7 @@ android app.
 ```
 
 ```markdown
-# Traknpay Recommendation:
+# Payment Gateway Recommendation:
 
 You must securly store the SALT key in your server. Compromise of the same would lead to attacks.
 
@@ -335,14 +335,14 @@ public partial class PaymentRequest : System.Web.UI.Page
 ```
 -------------
 
-> b. Your server should be ready to receive the payment parameters. This means you must have a API in your server that receives the response from Traknpay on payment completion. 
+> b. Your server should be ready to receive the payment parameters. This means you must have a API in your server that receives the response from Payment Gateway on payment completion. 
 
 ```markdown
 
 # Response code have the below 2 components:
 
-1. Your response must have the code to extract the hash from the Traknpay payment response 
-and verify the hash to ensure no data tampering existed between Traknpay server and your 
+1. Your response must have the code to extract the hash from the Payment Gateway payment response 
+and verify the hash to ensure no data tampering existed between Payment Gateway server and your 
 server. You must again use SHA-512 algorithm to verify the hash.
 
 2. If you are using the webview code given in the following section, then you must response 
@@ -352,18 +352,18 @@ the response fields that you need in a json format.
 
 ```markdown
 
-# Traknpay Recommendations:
+# Payment Gateway Recommendations:
 
 At the very least, you should reverify the amount and order id field on your payment response 
 API with the actual values of the amount and order id during payment initiation in your android app.
  
 ```
 
-> Response Parameters List send by Traknpay server to your return url:
+> Response Parameters List send by Payment Gateway server to your return url:
 
 | `PARAMETER NAME` | `DESCRIPTION`                  |
 | -----------------|:------------------------------:|
-| `transaction_id`	   | `A unique ID that can be used to trace the transaction uniquely within Traknpay. Transaction IDs are alphanumeric. An example transaction ID is HDVISC1299876438` |
+| `transaction_id`	   | `A unique ID that can be used to trace the transaction uniquely within Payment Gateway. Transaction IDs are alphanumeric. An example transaction ID is HDVISC1299876438` |
 | `payment_mode`	   | `This tells the payment mode used by customer - example: "credit card", "debitcard", "netbanking", etc.` |
 | `payment_channel`	   | `This tells the payment channel used by customer - example: "Visa", "HDFC Bank", "Paytm", etc.` |
 | `payment_datetime`   | `Date and Time of this payment in "YYYY-MM-DD HH:MM:SS" format.` |
@@ -388,8 +388,8 @@ API with the actual values of the amount and order id during payment initiation 
 | `udf3`	   | `The same value that was originally sent by merchant.` |
 | `udf4`	   | `The same value that was originally sent by merchant.` |
 | `udf5`	   | `The same value that was originally sent by merchant.` |
-| `cardmasked`	   | `Masked card number which was used to make the transaction. For example, 437748******0069 Note: This parameter will be returned as part of the response only if the merchant’s account has been enabled for the same. Please speak to your Traknpay relationship manager if you would like this information to be returned to you.` |
-| `hash`	   | `The hash code calculated from Trankpay server that you must use it to verify for ensuring data integrity between traknpay server and your server.` |
+| `cardmasked`	   | `Masked card number which was used to make the transaction. For example, 437748******0069 Note: This parameter will be returned as part of the response only if the merchant’s account has been enabled for the same. Please speak to your Payment Gateway relationship manager if you would like this information to be returned to you.` |
+| `hash`	   | `The hash code calculated from Trankpay server that you must use it to verify for ensuring data integrity between Payment Gateway server and your server.` |
 
 
 > Sample response API code for ASP.NET and PHP is given below for reference:
@@ -671,12 +671,12 @@ function hashCalculate($salt,$input){
            
 ```
 
-> Request parameters List(mandatory and non mandatory fields) that needs to be posted to Traknpay Server during payment initiation:
+> Request parameters List(mandatory and non mandatory fields) that needs to be posted to Payment Gateway Server during payment initiation:
 
 
 | `PARAMETER NAME` | `DESCRIPTION`                  | `REQUIRED`           | `DATATYPE`  |
 | -----------------|:------------------------------:|:--------------------:|:-----------:|
-| `api_key`        | `Traknpay would assign a unique 40-digit merchant key to you. This key is exclusive to your business/login account.If you have multiple login accounts, there will necessarily be one different api_key per login account that is assigned to you.` | `Mandatory` | `String - Max:40.` |
+| `api_key`        | `Payment Gateway would assign a unique 40-digit merchant key to you. This key is exclusive to your business/login account.If you have multiple login accounts, there will necessarily be one different api_key per login account that is assigned to you.` | `Mandatory` | `String - Max:40.` |
 | `order_id`	   | `This is your (merchant) reference number. It must be unique for every transaction. We do perform a validation at our end and do not allow duplicate order_ids for the same merchant.` | `Mandatory` | `String - Max:30.` |
 | `mode`	   | `This is the payment mode ("TEST" or "LIVE" are valid values). "LIVE" is the default value when not specified.` | `Optional` | `String - Max:4.` |
 | `amount`	   | `This is the payment amount.` | `Mandatory` | `Decimal - Max Digits Before Decimal:15, Max Digits after Decimal:2.` |
@@ -697,9 +697,9 @@ function hashCalculate($salt,$input){
 | `udf3`	   | `User defined field 3.` | `Optional` | `String - Max:300.` |
 | `udf4`	   | `User defined field 4.` | `Optional` | `String - Max:300.` |
 | `udf5`	   | `User defined field 5.` | `Optional` | `String - Max:300.` |
-| `return_url`	   | `Your return URL where Traknpay will send all the payment response parameters after a transaction.` | `Mandatory` | `String - Max:200.` |
-| `return_url_failure`	   | `Traknpay will send all failed transaction response parameters to this URL if specified, else, it will send the failed response to the "return_url" parameter` | `Optional` | `String - Max:200.` |
-| `return_url_cancel`	   | `Traknpay will send all cancelled transaction response parameters to this URL if specified, else, it will send the cancelled response to the "return_url" parameter.` | `Optional` | `String - Max:200.` |
+| `return_url`	   | `Your return URL where Payment Gateway will send all the payment response parameters after a transaction.` | `Mandatory` | `String - Max:200.` |
+| `return_url_failure`	   | `Payment Gateway will send all failed transaction response parameters to this URL if specified, else, it will send the failed response to the "return_url" parameter` | `Optional` | `String - Max:200.` |
+| `return_url_cancel`	   | `Payment Gateway will send all cancelled transaction response parameters to this URL if specified, else, it will send the cancelled response to the "return_url" parameter.` | `Optional` | `String - Max:200.` |
 | `percent_tdr_by_user`	   | `Percent of tdr amount paid by user.` | `Optional` | `Integer - Min:0,Max:100.` |
 | `flatfee_tdr_by_user`	   | `Fixed fee paid by user.` | `Optional` | `Integer - Min:0,Max:99999999.` |
 | `show_convenience_fee`	   | `Controls whether the convenience fee amount (for surcharge merchants) is displayed to the customer (on the payment page) or not.` | `Optional` | `String - Max:1.` |
@@ -708,7 +708,7 @@ function hashCalculate($salt,$input){
 | `payment_page_display_text`	   | `This text will be displayed below the logo on payment page.` | `Optional` | `String - Max:200.` |
 | `hash`	   | `Checksum to ensure data integrity during server to server calls.` | `Mandatory` | `String - Max:200.` |
 
-> Post the parameters to the Traknpay Payment URL and intercept your response API with a javascript to receive the response parameters.
+> Post the parameters to the Payment Gateway Payment URL and intercept your response API with a javascript to receive the response parameters.
 Finally parse the json response string to get the values of individual fields.
 
 ```java
