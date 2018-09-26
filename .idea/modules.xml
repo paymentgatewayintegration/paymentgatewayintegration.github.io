@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/traknpaypg.github.io.iml" filepath="$PROJECT_DIR$/traknpaypg.github.io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paymentgatewayintegration.github.io.iml" filepath="$PROJECT_DIR$/paymentgatewayintegration.github.io.iml" />
     </modules>
   </component>
 </project>
