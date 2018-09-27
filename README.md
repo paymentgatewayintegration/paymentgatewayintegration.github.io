@@ -44,6 +44,8 @@ android app.
 
 ```
 
+![Hash Calculation](https://paymentgatewayintegration.github.io/doc/images/hash.png?raw=true)
+
 ```markdown
 # Payment Gateway Recommendation:
 
