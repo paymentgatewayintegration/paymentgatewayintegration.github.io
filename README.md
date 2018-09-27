@@ -757,7 +757,3 @@ class MyJavaScriptInterface {
 }
 
 ```
-
-# Contact Us
-
-> For any issues regarding the code, please write in to: `abhinav.pillai@omniware.in`
