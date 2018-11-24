@@ -6,23 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a12c15bd-68e0-4251-961f-1d7be1c3225e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/PGConstants.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/PGSdkInitializer.java" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/PaymentActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/PaymentActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/SampleAppConstants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/SampleAppConstants.java" />
-    </list>
+    <list default="true" id="a12c15bd-68e0-4251-961f-1d7be1c3225e" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +71,7 @@
       <file leaf-file-name="SampleAppConstants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/SampleAppConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-934">
+            <state relative-caret-position="212">
               <caret line="4" column="54" lean-forward="false" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="54" />
               <folding />
             </state>
@@ -2479,7 +2463,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/test/pg/sampleapp/SampleAppConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-934">
+        <state relative-caret-position="212">
           <caret line="4" column="54" lean-forward="false" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="54" />
           <folding />
         </state>
