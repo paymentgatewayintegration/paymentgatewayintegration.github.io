@@ -33,6 +33,8 @@ public class PaymentActivity extends AppCompatActivity {
         //Before initiating payment, you should calculate the hash for the payment request parameters.
         //Please refer to the integration documentation for more details.
 
+
+        //Now again create a query string of the payment parameters with hash obtained from the previous activity.
         try{
             StringBuffer requestParams=new StringBuffer("api_key="+URLDecoder.decode(SampleAppConstants.PG_API_KEY, "UTF-8"));
             requestParams.append("&amount="+URLDecoder.decode(SampleAppConstants.PG_AMOUNT, "UTF-8"));
@@ -83,6 +85,7 @@ public class PaymentActivity extends AppCompatActivity {
             webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
             webSettings.setDomStorageEnabled(true);
             webview.addJavascriptInterface(new MyJavaScriptInterface(), "HtmlViewer");
+            //Not POST the query string obtained above to Payment Gateway's Payment API in a webview.
             webview.postUrl(SampleAppConstants.PG_HOSTNAME+"/v2/paymentrequest",requestParams.toString().getBytes());
 
         }catch (Exception e){
@@ -98,6 +101,7 @@ public class PaymentActivity extends AppCompatActivity {
     class MyJavaScriptInterface {
         @JavascriptInterface
         public void showHTML(String html) {
+            //On completion of the payment, the response from your WebServer's API will be obtained here.
             Intent intent=new Intent(getBaseContext(), ResponseActivity.class);
             intent.putExtra("payment_response", Html.fromHtml(html).toString());
             startActivity(intent);

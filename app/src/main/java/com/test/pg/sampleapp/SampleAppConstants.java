@@ -2,19 +2,19 @@ package com.test.pg.sampleapp;
 
 public class SampleAppConstants {
     //API_KEY is given by the Payment Gateway. Please Copy Paste Here.
-    public static final String PG_API_KEY = "<API_KEY>";
+    public static final String PG_API_KEY = "<your_API_key>";
 
     //HOSTNAME is given by the Payment Gateway. Please Copy Paste Here.
-    public static final String PG_HOSTNAME = "<HOST_NAME>";
+    public static final String PG_HOSTNAME = "<traknpay_hostname>";
 
     //URL to Accept Payment Response After Payment. This needs to be done at the client's web server.
-    public static final String PG_RETURN_URL = "<RETURN_URL>";
+    public static final String PG_RETURN_URL = "<your_return_url>";
 
     //URL to calculate the Hash for the payment request parameters. This needs to be done at the client's web server.
     public static final String PG_HASH_URL = "<your_hash_url>";
 
     //Enter the Mode of Payment Here . Allowed Values are "LIVE" or "TEST".
-    public static final String PG_MODE = "<MODE>";
+    public static final String PG_MODE = "TEST";
 
     //PG_CURRENCY is given by the Payment Gateway. Only "INR" Allowed.
     public static final String PG_CURRENCY = "INR";
@@ -39,7 +39,5 @@ public class SampleAppConstants {
     public static final String PG_UDF3 = "udf3";
     public static final String PG_UDF4 = "udf4";
     public static final String PG_UDF5 = "udf5";
-    public static final String PG_RETURN_ACTIVITY_PACKAGE = "com.test.pg.sampleapp";
-    public static final String PG_RETURN_ACTIVITY_CLASS = "com.test.pg.sampleapp.ResponseActivity";
 
 }

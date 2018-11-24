@@ -32,6 +32,7 @@ public class ResponseActivity extends AppCompatActivity {
         if(bundle != null){
             String paymentResponse = bundle.getString("payment_response");
             try{
+                //Parse the JSON response from the previous activity and display in the TextViews.
                 JSONObject response = new JSONObject(paymentResponse);
                 TextView textview = findViewById(com.test.pg.sampleapp.R.id.textView);
                 TextView transid = findViewById(com.test.pg.sampleapp.R.id.transid);
