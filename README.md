@@ -23,6 +23,8 @@
 
 > a. To prevent the data tampering(and ensure data integrity) between the your app and Payment Gateway, you will need to setup up an API in your server to calculate an encrypted value or checksum known as hash from the payment request parameters and SALT key before sending it to the Payment Gateway server.
 
+![Hash Calculation Architecture Overview](https://paymentgatewayintegration.github.io/doc/images/Hash_Calculation_PG.jpg?raw=true)
+
 ```markdown
 Payment Gateway uses **SHA512** cryptographic hash function to prevent data tampering. To calculate the 
 hash, a secure private key known as **SALT key** will be provided by Payment Gateway that needs to be 
@@ -45,8 +47,6 @@ android app.
 ```
 
 ![Hash Calculation](https://paymentgatewayintegration.github.io/doc/images/hash.png?raw=true)
-
-![Hash Calculation Architecture Overview](https://paymentgatewayintegration.github.io/doc/images/Hash_Calculation_PG.jpg?raw=true)
 
 ```markdown
 # Payment Gateway Recommendation:
