@@ -126,83 +126,52 @@ public class PaymentRequest extends HttpServlet {
 ```php
 **PHP Sample Code**
 
-try {
-	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+<?php
 
-	$params["api_key"]=trim($_POST["api_key"]);
-	$params["amount"]=trim($_POST["amount"]);
-	$params["email"]=trim($_POST["email"]);
-	$params["name"]=trim($_POST["name"]);
-	$params["phone"]=trim($_POST["phone"]);
-	$params["order_id"]=trim($_POST["order_id"]);
-	$params["currency"]=trim($_POST["currency"]);
-	$params["description"]=trim($_POST["description"]);
-	$params["city"]=trim($_POST["city"]);
-	$params["state"]=trim($_POST["state"]);
-	$params["address_line_1"]=trim($_POST["address_line_1"]);
-	$params["address_line_2"]=trim($_POST["address_line_2"]);
-	$params["zip_code"]=trim($_POST["zip_code"]);
-	$params["country"]=trim($_POST["country"]);
-	$params["return_url"]=trim($_POST["return_url"];)
-	$params["mode"]=trim($_POST["mode"]);
-	if(!empty($_POST["udf1"])) $params["udf1"]=trim($_POST["udf1"]);
-	if(!empty($_POST["udf2"])) $params["udf2"]=trim($_POST["udf2"]);
-	if(!empty($_POST["udf3"])) $params["udf3"]=trim($_POST["udf3"]);
-	if(!empty($_POST["udf4"])) $params["udf4"]=trim($_POST["udf4"]);
-	if(!empty($_POST["udf5"])) $params["udf5"]=trim($_POST["udf5"]);
 
-	$hash_columns = [
-		'name',
-		'phone',
-		'email',
-		'description',
-		'amount',
-		'api_key',
-		'order_id',
-		'currency',
-		'city',
-		'state',
-		'address_line_1',
-		'address_line_2',
-		'country',
-		'zip_code',
-		'return_url',
-		'hash',
-		'mode',
-		'udf1',
-		'udf2',
-		'udf3',
-		'udf4',
-		'udf5'
-	];
+if(!empty($_POST)){
 
-	sort($hash_columns);
+	$salt="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	$input = $_POST;
+	$pgHash = $input['hash'];
+	unset($input['hash']);
+	/*Sort the array before hashing*/
+	ksort($input);
+
+	/*Create a | (pipe) separated string of all the $input values which are available in $hash_columns*/
 	$hash_data = $salt;
-
-	foreach ($hash_columns as $column) {
-		if (isset($params[$column])) {
-			if (strlen($params[$column]) > 0) {
-				$hash_data .= '|' . $params[$column];
+	foreach ($input as $inputParam) {
+		if (isset($inputParam)) {
+			if (strlen($inputParam) > 0) {
+				$hash_data .= '|' . trim($inputParam);
 			}
 		}
 	}
-
+	/* Convert the $hash_data to Upper Case and then use SHA512 to generate hash key */
 	$hash = null;
 	if (strlen($hash_data) > 0) {
 		$hash = strtoupper(hash("sha512", $hash_data));
 	}
 
-	$output['hash'] = $hash;
-	$output['status']=0;
-	$output['responseCode']="Hash Created Successfully";
+	if($hash==$pgHash){
 
-}catch(Exception $e) {
-	$output['hash'] = "INVALID";
-	$output['status']=1;
-	$output['responseCode']=$e->getMessage();
+		echo json_encode([
+			'order_id'=>$_POST['order_id'],
+			'amount'=>$_POST['amount'],
+			'transaction_id'=>$_POST['transaction_id'],
+			'response_message'=>$_POST['response_message'],
+			'response_code'=>$_POST['response_code'],
+		]);
+	}else{
+		echo json_encode(['error'=>'Hash Mismatch']);
+	}
+
+}else{
+	echo json_encode(['error'=>'Invalid Response']);
 }
 
-echo json_encode($output);
+
+?>
 
 ```
 
